@@ -5,7 +5,7 @@ rt.track_id,
 new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(rt.track_date_created).getTime()/1000 as epoch_ts,
 trim(ra.artist_name) as artist,
 rg.genre_id,
-CASE WHENrt. track_listens > 20 
+CASE WHEN rt. track_listens > 20 
 	 THEN 'Super Hit'
 	 else 'Hit'
 END as Trending,
