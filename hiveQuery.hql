@@ -1,4 +1,4 @@
--- Here I am trying to write a hive query where we can use maximum operations on every column
+-- Here I am trying to write a hive query where we can use maximum operations in a single query
 SELECT 
 rt.track_id,
 1 as static_reporting_id,
