@@ -1,7 +1,7 @@
 -- Here I am trying to write a hive query where we can use maximum operations in a single query
 SELECT 
 rt.track_id,
-count(rt.track_id),
+count(rt.track_id) as cnt,
 COALESCE(rt.person_listens.' '),
 1 as static_reporting_id,
 new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(rt.track_date_created).getTime()/1000 as epoch_ts,
