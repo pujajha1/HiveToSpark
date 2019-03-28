@@ -19,6 +19,7 @@ val rt = tracks
         .filter("track_date_created='11/26/2008 01:48:14 AM'")
         .filter("track_number<>track_id")
         .filter("track_explicit not in ('Radio-Unsafe')")
+        .groupBy("track_id").agg(count("*").alias("cnt"))
 
 val ra = artist
         .withColumn("artist", trim(col("artist_name")))
