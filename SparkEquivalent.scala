@@ -24,4 +24,4 @@ val ra = artist
         .withColumn("artist", trim(col("artist_name")))
 
 val rg = genres
-        .select("genre_id"
+        .select("genre_id")
