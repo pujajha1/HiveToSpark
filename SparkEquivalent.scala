@@ -14,12 +14,12 @@ val rt = tracks
         .parse("track_date_created").getTime()/1000))//track_date_created format='11/26/2008 01:48:14 AM'
         .withColumn("Trending",when(tracks("track_listens")>20,"Super Hit")
         .otherwise("Hit"))
-        .withColumn("epich_ts",lit(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        .withColumn("current_time",lit(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         .format(LocalDateTime.now)))
         .filter("track_date_created='11/26/2008 01:48:14 AM'")
         .filter("track_number<>track_id")
         .filter("track_explicit not in ('Radio-Unsafe')")
-        .groupBy("track_id").agg(count("*").alias("cnt"))
+        .groupBy("track_id").agg(count("*").alias("cnt_track_id"))
 
 val ra = artist
         .withColumn("artist", trim(col("artist_name")))
@@ -30,6 +30,15 @@ val rg = genres
 val rartrg=rt
            .join(ra,col("track_id")===col("track_id"),"inner")
            .join(rg,col("genre_id")===col("genre_id"),"LEFT OUTER")
+           .select("track_id",
+                    "static_reporting_id",
+                    "epoch_new_ts",
+                    "track_date_created",
+                    "Trending",
+                    "current_time",
+                    "artist",
+                    "genre_id",
+                    "cnt_track_id")
 
 rartg
 
