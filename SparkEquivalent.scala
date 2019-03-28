@@ -14,7 +14,7 @@ val rt = tracks
         .parse("track_date_created").getTime()/1000))//track_date_created format='11/26/2008 01:48:14 AM'
         .withColumn("Trending",when(tracks("track_listens")>20,"Super Hit")
         .otherwise("Hit"))
-        .withColumn("dt",lit(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        .withColumn("epich_ts",lit(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         .format(LocalDateTime.now)))
         .filter("track_date_created='11/26/2008 01:48:14 AM'")
         .filter("track_number<>track_id")
@@ -25,3 +25,10 @@ val ra = artist
 
 val rg = genres
         .select("genre_id")
+
+val rartrg=rt
+           .join(ra,col("track_id")===col("track_id"),"inner")
+           .join(rg,col("genre_id")===col("genre_id"),"LEFT OUTER")
+
+    
+
