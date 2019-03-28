@@ -1,4 +1,6 @@
 //This is work in progress code
+import java.text.SimpleDateFormat
+
 val tracks:DataFrame=spark.table("raw_tracks")
 val artist:DataFrame=spark.table("raw_artist")
 val genres:DataFrame=spark.table("raw_genres")
