@@ -31,5 +31,7 @@ val rartrg=rt
            .join(ra,col("track_id")===col("track_id"),"inner")
            .join(rg,col("genre_id")===col("genre_id"),"LEFT OUTER")
 
+rartg
+
     
 
