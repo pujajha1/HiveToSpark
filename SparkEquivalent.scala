@@ -35,13 +35,16 @@ val rartrg=rt
            .join(rg,col("genre_id")===col("genre_id"),"LEFT OUTER")
            .select("track_id",
                     "static_reporting_id",
+                    "person_listens",
+                    "track_url",
                     "epoch_new_ts",
                     "track_date_created",
                     "Trending",
                     "current_time",
                     "artist",
                     "genre_id",
-                    "cnt_track_id")
+                    "cnt_track_id",
+                     "customers")
 
 rartg
 
