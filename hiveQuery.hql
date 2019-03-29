@@ -2,8 +2,12 @@
 SELECT 
 rt.track_id,
 count(rt.track_id) as cnt,
-COALESCE(rt.person_listens.' '),
+COALESCE(rt.person_listens,NULL),
+url as track_url,
+COALESCE(col1,0),
+COALESCE(col2,0),
 1 as static_reporting_id,
+count(distinct track_listens) as customers,
 new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(rt.track_date_created).getTime()/1000 as epoch_ts,
 trim(ra.artist_name) as artist,
 rg.genre_id,
@@ -21,4 +25,6 @@ where rt.track_date_created='11/26/2008 01:48:14 AM'
 and rt.track_number<> rt.track_id
 and rt.track_explicit not in ('Radio-Unsafe')
 GROUP BY 
-rt.track_id;
+rt.track_id
+ORDER BY track_id,
+col1;
