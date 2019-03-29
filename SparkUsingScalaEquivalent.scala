@@ -24,7 +24,7 @@ val rt = tracks
          .filter("track_number<>track_id") //not equal to
          .filter("track_explicit not in ('Radio-Unsafe')")
          .groupBy("track_id").agg(count("*").alias("cnt_track_id"),countDistinct("track_listens").alias("customers")) //aggregate function
-
+         .orderBy("track_id","col1")
 val ra = artist
         .withColumn("artist", trim(col("artist_name")))
 
