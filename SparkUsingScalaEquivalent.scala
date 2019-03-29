@@ -1,3 +1,11 @@
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession
+   .builder()
+   .appName("SparkSessionExample")
+   .config("spark.sql.warehouse.dir", warehouseLocation)
+   .enableHiveSupport()
+   .getOrCreate()
 
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
