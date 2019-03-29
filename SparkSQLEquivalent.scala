@@ -1,5 +1,13 @@
+import org.apache.spark.sql.SparkSession
 
-    spark.sql(s"""
+val spark = SparkSession
+   .builder()
+   .appName("SparkSessionExample")
+   .config("spark.sql.warehouse.dir", warehouseLocation)
+   .enableHiveSupport()
+   .getOrCreate()
+
+spark.sql(s"""
              CREATE OR REPLACE TEMPORARY VIEW  master_body_data_view
     	        AS SELECT 
                     rt.track_id,
