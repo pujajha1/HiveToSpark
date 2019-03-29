@@ -1,4 +1,4 @@
-# HiveToSpark
+# Hive To Spark
 Converting Queries from Hive To Spark
 
 This is a demo for Hive to Spark Conversion.
