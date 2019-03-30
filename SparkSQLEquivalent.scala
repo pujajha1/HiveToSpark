@@ -1,4 +1,5 @@
 import org.apache.spark.sql.SparkSession
+import java.text.SimpleDateFormat
 
 val spark = SparkSession
    .builder()
